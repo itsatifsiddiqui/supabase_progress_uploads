@@ -1,15 +1,23 @@
 name: supabase_progress_uploads
-description: A starting point for Dart libraries or applications.
+description: A package for resumable file uploads with progress tracking, integrated with Supabase.
 version: 1.0.0
-# repository: https://github.com/my_org/my_repo
+homepage: https://github.com/itsatifsiddiqui/supabase_progress_uploads
 
 environment:
-  sdk: ^3.3.0
+  sdk: ">=3.3.0 <4.0.0"
 
-# Add regular dependencies here.
 dependencies:
-  # path: ^1.8.0
+  flutter:
+    sdk: flutter
+  tus_client_dart: ^2.5.0
+  path_provider: ^2.1.3
+  supabase_flutter: ^2.5.8
+  uuid: ^4.4.2
+  path: ^1.9.0
+  cross_file: ^0.3.4+1
 
 dev_dependencies:
-  lints: ^3.0.0
-  test: ^1.24.0
+  flutter_test:
+    sdk: flutter
+
+flutter:

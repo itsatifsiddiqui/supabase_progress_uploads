@@ -1,8 +1,5 @@
-/// Support for doing something awesome.
-///
-/// More dartdocs go here.
-library;
+library supabase_progress_uploads;
 
-export 'src/supabase_progress_uploads_base.dart';
-
-// TODO: Export any libraries intended for clients of this package.
+export 'src/controller.dart';
+export 'src/progress.dart';
+export 'src/service.dart';
