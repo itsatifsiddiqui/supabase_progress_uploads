@@ -14,6 +14,7 @@ class SupabaseUploadController {
   final Map<int, TusClient> _clients = {};
   final Map<int, double> _progressMap = {};
   final bool enableDebugLogs;
+  final String cacheControl;
 
   final Map<int, Completer<String>> _urlCompleters = {};
 
@@ -25,8 +26,12 @@ class SupabaseUploadController {
 
   Stream<int> get completionStream => _completionController.stream;
 
-  SupabaseUploadController(this._supabase, this.bucketName,
-      {this.enableDebugLogs = false}) {
+  SupabaseUploadController(
+    this._supabase,
+    this.bucketName, {
+    this.enableDebugLogs = false,
+    this.cacheControl = 'no-cache',
+  }) {
     'Initialized SupabaseUploadController for bucket: $bucketName'
         .logIf(enableDebugLogs);
   }
@@ -74,7 +79,8 @@ class SupabaseUploadController {
 
     final headers = {
       'Authorization': 'Bearer ${_supabase.auth.currentSession?.accessToken}',
-      'x-upsert': 'true'
+      'x-upsert': 'true',
+      'cache-control': cacheControl,
     };
 
     final userId = _supabase.auth.currentUser!.id;
