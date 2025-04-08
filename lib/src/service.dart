@@ -8,16 +8,24 @@ class SupabaseUploadService {
   final SupabaseUploadController controller;
   final bool enableDebugLogs;
   final String cacheControl;
+
+  /// This is the path that will be used to store the uploaded files.
+  ///
+  /// If not provided, the root path will be the user's ID.
+  /// e.g if the user's ID is `123`, the files will be stored in the `123` folder.
+  final String? rootPath;
   SupabaseUploadService(
     SupabaseClient supabase,
     String bucketName, {
     this.enableDebugLogs = false,
     this.cacheControl = 'no-cache',
+    this.rootPath,
   }) : controller = SupabaseUploadController(
           supabase,
           bucketName,
           enableDebugLogs: enableDebugLogs,
           cacheControl: cacheControl,
+          rootPath: rootPath,
         ) {
     'Initialized SupabaseUploadService with bucket: $bucketName'
         .logIf(enableDebugLogs);

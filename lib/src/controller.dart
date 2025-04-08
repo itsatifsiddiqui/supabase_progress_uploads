@@ -15,6 +15,7 @@ class SupabaseUploadController {
   final Map<int, double> _progressMap = {};
   final bool enableDebugLogs;
   final String cacheControl;
+  final String? rootPath;
 
   final Map<int, Completer<String>> _urlCompleters = {};
 
@@ -31,6 +32,7 @@ class SupabaseUploadController {
     this.bucketName, {
     this.enableDebugLogs = false,
     this.cacheControl = 'no-cache',
+    this.rootPath,
   }) {
     'Initialized SupabaseUploadController for bucket: $bucketName'
         .logIf(enableDebugLogs);
@@ -87,7 +89,7 @@ class SupabaseUploadController {
     final filename = client.file.name;
     final fileName = path.basename(filename);
     final fileType = client.file.mimeType ?? contentType ?? 'image/*';
-    final objectName = '$userId/$fileName';
+    final objectName = _buildRootPath(userId, fileName);
 
     _progressMap[fileId] = 0.0;
 
@@ -134,6 +136,12 @@ class SupabaseUploadController {
         }
       },
     );
+  }
+
+  String _buildRootPath(String userId, String fileName) {
+    if (rootPath == null) return '$userId/$fileName';
+    if (rootPath!.isEmpty) return '$fileName';
+    return '$rootPath/$fileName';
   }
 
   void pauseUpload(int fileId) {
