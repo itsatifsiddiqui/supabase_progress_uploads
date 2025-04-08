@@ -7,12 +7,18 @@ import 'logger.dart';
 class SupabaseUploadService {
   final SupabaseUploadController controller;
   final bool enableDebugLogs;
-
+  final String cacheControl;
   SupabaseUploadService(
     SupabaseClient supabase,
     String bucketName, {
     this.enableDebugLogs = false,
-  }) : controller = SupabaseUploadController(supabase, bucketName) {
+    this.cacheControl = 'no-cache',
+  }) : controller = SupabaseUploadController(
+          supabase,
+          bucketName,
+          enableDebugLogs: enableDebugLogs,
+          cacheControl: cacheControl,
+        ) {
     'Initialized SupabaseUploadService with bucket: $bucketName'
         .logIf(enableDebugLogs);
   }
