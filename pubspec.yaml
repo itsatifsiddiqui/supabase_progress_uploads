@@ -1,6 +1,6 @@
 name: supabase_progress_uploads
 description: A package for resumable file uploads with progress tracking, integrated with Supabase.
-version: 1.1.0
+version: 1.0.2
 homepage: https://github.com/itsatifsiddiqui/supabase_progress_uploads
 
 environment:
