@@ -53,7 +53,8 @@ class _UploadExampleState extends State<UploadExample> {
           setState(() => _singleProgress = progress);
         },
       );
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('File Uploaded')));
+      ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text('File Uploaded')));
       print('Uploaded file URL: $url');
     }
   }
@@ -68,7 +69,8 @@ class _UploadExampleState extends State<UploadExample> {
         },
       );
 
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Files Uploaded')));
+      ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text('Files Uploaded')));
       print('Uploaded files URLs: $urls');
     }
   }
@@ -84,7 +86,8 @@ class _UploadExampleState extends State<UploadExample> {
         },
       );
       String? url = await _uploadController.getUploadedUrl(fileId);
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('File Uploaded')));
+      ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text('File Uploaded')));
       print('Uploaded file URL: $url');
     }
   }
@@ -107,7 +110,8 @@ class _UploadExampleState extends State<UploadExample> {
               onPressed: _uploadMultipleFiles,
               child: const Text('Upload Multiple Files'),
             ),
-            Text('Multiple Progress: ${(_multipleProgress).toStringAsFixed(2)}%'),
+            Text(
+                'Multiple Progress: ${(_multipleProgress).toStringAsFixed(2)}%'),
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: _uploadWithController,

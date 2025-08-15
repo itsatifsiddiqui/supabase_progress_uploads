@@ -17,7 +17,8 @@ class SupabaseUploadProgress {
   }
 
   @override
-  String toString() => 'SupabaseUploadProgress(fileId: $fileId, progress: $progress)';
+  String toString() =>
+      'SupabaseUploadProgress(fileId: $fileId, progress: $progress)';
 
   @override
   bool operator ==(Object other) {
